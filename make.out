@@ -13,3 +13,8 @@ src/Reuleaux.cc: In member function ‘virtual bool ReuleauxTriangle::ContainedB
 src/Reuleaux.cc:55:8: error: ‘isInside’ was not declared in this scope
    55 |     if(isInside(vertices,vertices.size(),vertice1_) && isInside(vertices,vertices.size(),vertice2_) && isInside(vertices,vertices.size(),vertice3_)){
       |        ^~~~~~~~
+tests/PolygonPolygonTest.cc: In member function ‘virtual void PolygonPolygon_Edge_Test::TestBody()’:
+tests/PolygonPolygonTest.cc:75:29: error: ‘vertices1’ was not declared in this scope; did you mean ‘vertices2’?
+   75 |     Polygon inner = Polygon(vertices1);
+      |                             ^~~~~~~~~
+      |                             vertices2

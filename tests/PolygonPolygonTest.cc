@@ -71,9 +71,9 @@ TEST(PolygonPolygon, Coincident)
 
 TEST(PolygonPolygon, Edge)
 {
-    std::vector<Point> vertices1 = {Point(0.0,0.0),Point(6.0,0.0),Point(6.0,6.0),Point(2.0,4.0),Point(0.0,6.0)};
-    Polygon inner = Polygon(vertices1);
-    std::vector<Point> vertices2 = {Point(1.0,1.0),Point(5.0,1.0),Point(5.0,5.0),Point(1.0,5.0)};
-    Polygon outer = Polygon(vertices2);
+    std::vector<Point> vertices2 = {Point(0.0,0.0),Point(6.0,0.0),Point(6.0,6.0),Point(2.0,4.0),Point(0.0,6.0)};
+    Polygon inner = Polygon(vertices2);
+    std::vector<Point> vertices1 = {Point(1.0,1.0),Point(5.0,1.0),Point(5.0,5.0),Point(1.0,5.0)};
+    Polygon outer = Polygon(vertices1);
     ASSERT_FALSE(inner.ContainedBy(outer));
 }
