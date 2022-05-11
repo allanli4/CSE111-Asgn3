@@ -51,24 +51,28 @@ bool ReuleauxTriangle::ContainedBy(Circle &circle)
 
 bool ReuleauxTriangle::ContainedBy(Polygon &polygon)
 {   
-    for(auto &side : polygon.Sides()){
-        if(crossRT(*this, side.F, side.S)){
-            int count = 0;
-            if(Geom::onSegment(side.F, vertice1_,side.S)){
-                count += 1;
+    std::vector<Point> vertices = polygon.Vertices();
+    if(Geom::isInside(vertices,vertices.size(),vertice1_) && Geom::isInside(vertices,vertices.size(),vertice2_) && Geom::isInside(vertices,vertices.size(),vertice3_)){
+        for(auto &side : polygon.Sides()){
+            if(crossRT(*this, side.F, side.S)){
+                int count = 0;
+                if(Geom::onSegment(side.F, vertice1_,side.S)){
+                    count += 1;
+                }
+                if(Geom::onSegment(side.F, vertice2_,side.S)){
+                    count += 1;
+                }
+                if(Geom::onSegment(side.F, vertice3_,side.S)){
+                    count += 1;
+                }
+                if(count > 1){
+                    return false;
+                }  
             }
-            if(Geom::onSegment(side.F, vertice2_,side.S)){
-                count += 1;
-            }
-            if(Geom::onSegment(side.F, vertice3_,side.S)){
-                count += 1;
-            }
-            if(count > 1){
-                return false;
-            }  
         }
+        return true;
     }
-    return true;
+    return false;
 }
 
 bool ReuleauxTriangle::ContainedBy(ReuleauxTriangle &rt)
