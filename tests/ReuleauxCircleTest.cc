@@ -59,6 +59,13 @@ TEST(ReuleauxCircle, Coincident)
   Circle outer = Circle(Point(0.0,0.0), 4.0);
   ASSERT_TRUE(inner.ContainedBy(outer));
 }
+TEST(ReuleauxCircle, Edge)
+{
+  const Point vertices[3] = {Point(0.0,0.0),Point(-4.0,0.0),Point(-2.0,sqrt(3)*2)};
+  ReuleauxTriangle inner = ReuleauxTriangle(vertices);
+  Circle outer = Circle(Point(9.06589,-6.33757), 93.8);
+  ASSERT_TRUE(inner.ContainedBy(outer));
+}
 /* 
    You'll need to extend this by adding additional tests for:
     1. Inner and Outer intersect (not contained)

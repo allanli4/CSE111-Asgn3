@@ -34,12 +34,14 @@ bool Polygon::ContainedBy(Polygon &polygon)
 {   
     for(auto &x : vertices_){
         if(!Geom::isInside(polygon.Vertices(),polygon.Vertices().size(),x)){
+            cout << "this vertex does not work: " << x.x << " " << x.y << endl;
             return false;
         }
     }
     for(auto &side : sides_){
         for(auto &outer_side : polygon.Sides()){
             if(Geom::segmentIntersect(side.F,side.S,outer_side.F,outer_side.S)){
+                cout << "hell no" << endl;
                 return false;
             }
         }
