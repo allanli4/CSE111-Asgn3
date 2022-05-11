@@ -1,0 +1,14 @@
+src/Geom.cc: In static member function ‘static double Geom::Point_to_Segment_Distance(const Point&, const Point&, const Point&)’:
+src/Geom.cc:125:9: warning: variable ‘AB_BE’ set but not used [-Wunused-but-set-variable]
+  125 |  double AB_BE, AB_AE;
+      |         ^~~~~
+src/Geom.cc:125:16: warning: variable ‘AB_AE’ set but not used [-Wunused-but-set-variable]
+  125 |  double AB_BE, AB_AE;
+      |                ^~~~~
+src/Geom.cc: In static member function ‘static double Geom::Point_to_Segment_Distance(const Point&, const Point&, const Point&)’:
+src/Geom.cc:125:9: warning: unused variable ‘AB_BE’ [-Wunused-variable]
+  125 |  double AB_BE, AB_AE;
+      |         ^~~~~
+src/Geom.cc:125:16: warning: unused variable ‘AB_AE’ [-Wunused-variable]
+  125 |  double AB_BE, AB_AE;
+      |                ^~~~~

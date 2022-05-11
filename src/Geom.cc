@@ -122,34 +122,34 @@ double Geom::Point_to_Segment_Distance(const Point &A, const Point &B, const Poi
 	AE.S = E.y - A.y;
 
 	// Variables to store dot product
-	double AB_BE, AB_AE;
+	// double AB_BE, AB_AE;
 
 	// Calculating the dot product
-	AB_BE = (AB.F * BE.F + AB.S * BE.S);
-	AB_AE = (AB.F * AE.F + AB.S * AE.S);
+	// AB_BE = (AB.F * BE.F + AB.S * BE.S);
+	// AB_AE = (AB.F * AE.F + AB.S * AE.S);
 
 	// Minimum distance from
 	// point E to the line segment
 	double reqAns = 0;
 
-	// Case 1
-	if (AB_BE > 0) {
+	// // Case 1
+	// if (AB_BE > 0) {
 
-		// Finding the magnitude
-		double y = E.y - B.y;
-		double x = E.x - B.x;
-		reqAns = sqrt(x * x + y * y);
-	}
+	// 	// Finding the magnitude
+	// 	double y = E.y - B.y;
+	// 	double x = E.x - B.x;
+	// 	reqAns = sqrt(x * x + y * y);
+	// }
 
-	// Case 2
-	else if (AB_AE < 0) {
-		double y = E.y - A.y;
-		double x = E.x - A.x;
-		reqAns = sqrt(x * x + y * y);
-	}
+	// // Case 2
+	// else if (AB_AE < 0) {
+	// 	double y = E.y - A.y;
+	// 	double x = E.x - A.x;
+	// 	reqAns = sqrt(x * x + y * y);
+	// }
 
-	// Case 3
-	else {
+	// // Case 3
+	// else {
 
 		// Finding the perpendicular distance
 		double x1 = AB.F;
@@ -158,7 +158,7 @@ double Geom::Point_to_Segment_Distance(const Point &A, const Point &B, const Poi
 		double y2 = AE.S;
 		double mod = sqrt(x1 * x1 + y1 * y1);
 		reqAns = abs(x1 * y2 - y1 * x2) / mod;
-	}
+	// }
 	return reqAns;
 }
 
