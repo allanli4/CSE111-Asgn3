@@ -12,9 +12,15 @@
 
 #include "Containable.h"
 #include "Point.h"
+#define Side pair<Point,Point>
+#define F first
+#define S second
+
+using namespace std;
 
 class Polygon : public Containable {
   private:
+    std::vector<Side> sides_;
     std::vector<Point> vertices_;
   public:
     // do not modify or remove this constructor
@@ -25,6 +31,7 @@ class Polygon : public Containable {
     bool ContainedBy(Polygon &polygon);
     bool ContainedBy(ReuleauxTriangle &rt);
     std::vector<Point> Vertices();
+    std::vector<Side> Sides();
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "Circle.h"
 #include "Reuleaux.h"
 #include <gtest/gtest.h>
+#include <cmath>
 
 // Uncomment when you're ready
 
@@ -50,7 +51,7 @@ TEST(CircleReuleaux, Intersect)
 }
 TEST(CircleReuleaux, Coincident)
 {
-  Circle inner = Circle(Point(-2.0,1.2), 1.7);
+  Circle inner = Circle(Point(-2.0,1.2), 2/sqrt(3));
   const Point vertices[3] = {Point(0.0,0.0),Point(-4.0,0.0),Point(-2.0,3.5)};
   ReuleauxTriangle outer = ReuleauxTriangle(vertices);
   ASSERT_TRUE(inner.ContainedBy(outer));

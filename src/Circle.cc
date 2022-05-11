@@ -3,9 +3,8 @@
 #include "Reuleaux.h"
 #include "Polygon.h"
 #include <cmath>
-
-#define MIN(x,y) (x < y ? x : y)
-#define MAX(x,y) (x > y ? x : y)
+#define F first
+#define S second
 
 Circle::Circle(const Point &center, double radius)
 {
@@ -25,42 +24,22 @@ bool Circle::ContainedBy(ReuleauxTriangle &rt)
 bool Circle::ContainedBy(Polygon &polygon)
 {
     //center in polygon
-    int counter = 0;
-    int i;
-    Point center = Center();
-    double xinters;
-    Point p1,p2;
     std::vector vertices = polygon.Vertices();
-    p1 = vertices[0];
-    int N = vertices.size();
-    for (i=1;i<=N;i++) {
-        p2 = vertices[i % N];
-        if (center.y > MIN(p1.y,p2.y)) {
-            if (center.y <= MAX(p1.y,p2.y)) {
-                if (center.x <= MAX(p1.x,p2.x)) {
-                    if (center.y != p2.y) {
-                        xinters = (center.y-p1.y)*(p2.x-p1.x)/(p2.y-p1.y)+p1.x;
-                        if (p1.x == p2.x || center.x <= xinters)
-                        counter++;
-                    }
-                }
-            }
+    std::vector sides = polygon.Sides();
+    if(Geom::isInside(vertices,vertices.size(),Center())){
+        for(auto &x : sides){
+            if(Radius() > Geom::Point_to_Segment_Distance(x.F, x.S, Center())){
+                return false;
+            };
         }
-        p1 = p2;
-    }
-    if (counter % 2 == 0)
-        return false;
-    for (auto &x : vertices){
-        if(Radius() > Geom::Separation(Center(), x)){
-            return false;
-        };
+        return true;
     };
-    return true;
+    return false;
 }
 
 bool Circle::ContainedBy(Circle &circle)
 {
-    double sep = Geom::Separation(Center(), circle.Center());
+    double sep = Geom::Point_to_Point_Distance(Center(), circle.Center());
     double diff = circle.Radius() - Radius();
     return sep <= diff;
 }
