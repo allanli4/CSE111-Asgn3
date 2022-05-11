@@ -39,7 +39,7 @@ bool ReuleauxTriangle::ContainedBy(Circle &circle)
             double D = D_1 > D_2 ? D_2 : D_1;
             D = D > D_3 ? D_3 : D;
             if(D + Radius() > circle.Radius()){
-                return false;
+                // return false;
             }
             else{
                 return true;
